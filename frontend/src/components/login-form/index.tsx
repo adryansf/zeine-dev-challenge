@@ -1,7 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+
+// Libs
+import { authClient } from "@/lib/auth-client";
+import { betterAuthErrorMessage } from "@/lib/better-auth-error-message";
 
 // Validator
 import { LoginFormSchema, loginFormSchema } from "./validator";
@@ -14,12 +20,31 @@ import { CustomButton } from "@/components/custom-button";
 
 // Component
 export function LoginForm() {
+  const [loading, setLoading] = useState(false);
+
   const form = useForm<LoginFormSchema>({
     resolver: zodResolver(loginFormSchema),
   });
 
-  const onSubmit = async (data: LoginFormSchema) => {
-    console.log(data);
+  const onSubmit = async ({ email, password }: LoginFormSchema) => {
+    await authClient.signIn.email({
+      email,
+      password,
+      callbackURL: `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard`,
+      rememberMe: true,
+      fetchOptions: {
+        onError: (ctx) => {
+          toast.error(betterAuthErrorMessage(ctx.error));
+          setLoading(false);
+        },
+        onSuccess: () => {
+          setLoading(false);
+        },
+        onRequest: () => {
+          setLoading(true);
+        },
+      },
+    });
   };
 
   return (
@@ -72,6 +97,7 @@ export function LoginForm() {
           rightIcon="arrow-right"
           className="mt-12"
           type="submit"
+          disabled={loading}
         />
       </form>
     </Form>

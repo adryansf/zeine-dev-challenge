@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Poppins } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
         className={`${dmSans.variable} ${poppins.variable} antialiased font-poppins`}
       >
         {children}
+        <Toaster richColors />
       </body>
     </html>
   );
