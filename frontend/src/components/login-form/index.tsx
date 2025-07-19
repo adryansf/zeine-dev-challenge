@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // Validator
-import { LoginFormSchema, loginFormSchema } from "./validor";
+import { LoginFormSchema, loginFormSchema } from "./validator";
 
 // Components
 import { Form } from "@/components/ui/form";
@@ -37,6 +37,7 @@ export function LoginForm() {
                     label="E-mail"
                     icon="mail"
                     placeholder="Seu e-mail cadastrado"
+                    type="email"
                     {...field}
                   />
                 </FormControl>
@@ -55,6 +56,7 @@ export function LoginForm() {
                     label="Senha"
                     icon="access"
                     placeholder="Sua senha de acesso"
+                    type="password"
                     {...field}
                   />
                 </FormControl>

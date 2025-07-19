@@ -46,6 +46,7 @@ export function CustomFormInput({
           className="cursor-pointer data-[type='password']:block hidden"
           onClick={handleButton}
           title="Visualizar Senha"
+          type="button"
         >
           <CustomIcon
             className="text-gray-300"

@@ -146,6 +146,10 @@
     outline: none; /* Removendo a borda de foco */
     box-shadow: none; /* Removendo sombras de foco */
   }
+
+  ::-ms-reveal {
+    display: none;
+  }
 }
 
 @layer components {
