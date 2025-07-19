@@ -38,7 +38,7 @@ export function UserMenu({ name, image }: Props) {
         className="max-w-64 rounded-[12px] bg-white px-4 py-4 gap-5 flex flex-col"
         align="end"
       >
-        <DropdownMenuLabel className="flex min-w-0 gap-3">
+        <DropdownMenuLabel className="flex min-w-0 gap-3 items-center">
           <Avatar className="size-8 border border-shape rounded-[8px]">
             <AvatarImage src={image} alt={name} />
           </Avatar>
