@@ -4,7 +4,7 @@ import Image from "next/image";
 import { LoginForm } from "@/components/login-form";
 import { CustomButton } from "@/components/custom-button";
 
-export default function Home() {
+export default function Login() {
   return (
     <main className="grid min-h-svh max-h-svh grid-cols-1 lg:grid-cols-12 gap-2">
       <aside className="flex lg:flex-col justify-center items-center lg:items-start lg:col-span-7 p-10">
