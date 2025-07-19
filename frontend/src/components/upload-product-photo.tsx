@@ -14,7 +14,7 @@ interface Props {
 }
 
 // Component
-export function UploadProfilePhoto({ onUpload }: Props) {
+export function UploadProductPhoto({ onUpload }: Props) {
   const [{ files }, { openFileDialog, getInputProps }] = useFileUpload({
     accept: "image/*",
     maxFiles: 1,
@@ -30,19 +30,22 @@ export function UploadProfilePhoto({ onUpload }: Props) {
   return (
     <div data-preview={!!previewUrl} className="relative inline-flex group">
       <div
-        className="relative overflow-hidden bg-shape size-[120px] rounded-[12px] cursor-pointer p-0 shadow-none"
+        className="relative overflow-hidden bg-shape w-[300px] h-[246px]  sm:w-[415px] sm:h-[340px] rounded-[12px] cursor-pointer p-0 shadow-none"
         onClick={openFileDialog}
         aria-label={previewUrl ? "Mudar imagem" : "Carregar imagem"}
       >
         <div
           aria-hidden="true"
-          className="hidden group-data-[preview=false]:flex justify-center items-center h-full w-full group-hover:group-data-[preview=true]:absolute group-hover:group-data-[preview=true]:flex group-data-[preview=true]:bg-black/60 transition-all"
+          className="hidden flex-col group-data-[preview=false]:flex group-hover:group-data-[preview=true]:absolute group-hover:group-data-[preview=true]:flex justify-center items-center h-full w-full  group-data-[preview=true]:bg-black/60 transition-all gap-4"
         >
           <CustomIcon
             size={32}
             icon="image-upload"
             className="text-orange-base group-data-[preview=true]:text-white"
           />
+          <p className="body-sm w-[159px] text-center text-gray-300 group-data-[preview=true]:text-white">
+            Selecione a imagem do produto
+          </p>
         </div>
         {previewUrl && (
           <img
