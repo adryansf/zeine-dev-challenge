@@ -15,7 +15,7 @@ import { useFormField } from "@/components/ui/form";
 import { iconVariants } from "@/components/custom-icon";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  leftIcon?: iconVariants;
+  icon?: iconVariants;
   label: string;
   name: string;
 }
@@ -23,8 +23,9 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 // Component
 export function CustomFormInput({
   label,
-  leftIcon,
+  icon,
   type = "text",
+  placeholder = "",
   ...rest
 }: Props) {
   const [show, setShow] = useState(false);
@@ -56,6 +57,7 @@ export function CustomFormInput({
         {/* Input */}
         <input
           {...rest}
+          placeholder={placeholder}
           className={cn(
             `peer placeholder:text-gray-200 body-md flex-1 outline-0 caret-orange-base`,
             rest.className
@@ -64,11 +66,11 @@ export function CustomFormInput({
         />
 
         {/* Custom Left Icon */}
-        {leftIcon && (
+        {icon && (
           <CustomIcon
             data-error={!!error}
             className="text-orange-base peer-placeholder-shown:text-gray-200 group-focus-within:peer-placeholder-shown:text-orange-base data-[error=true]:text-danger"
-            icon={leftIcon}
+            icon={icon}
             size={24}
           />
         )}

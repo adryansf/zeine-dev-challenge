@@ -54,6 +54,7 @@ export function CustomSelect({
         label={label}
         placeholder={placeholder}
         icon={icon}
+        className={className}
       />
 
       {/* Content */}

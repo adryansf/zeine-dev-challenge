@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, DM_Sans, Poppins } from "next/font/google";
+import { DM_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${dmSans.variable} ${poppins.variable} antialiased font-sans`}
+        className={`${dmSans.variable} ${poppins.variable} antialiased font-poppins`}
       >
         {children}
       </body>

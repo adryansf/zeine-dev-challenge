@@ -150,46 +150,46 @@
 
 @layer components {
   .title-lg {
-    @apply text-[28px] leading-[120%] font-bold font-[var(--font-title)];
+    @apply text-[clamp(20px,2.05vw,36px)] leading-[120%] font-bold font-[var(--font-title)];
   }
 
   .title-md {
-    @apply text-[24px] leading-[120%] font-bold font-[var(--font-title)];
+    @apply text-[clamp(18px,1.76vw,32px)] leading-[120%] font-bold font-[var(--font-title)];
   }
 
   .title-sm {
-    @apply text-[18px] leading-[120%] font-bold font-[var(--font-title)];
+    @apply text-[clamp(16px,1.31vw,24px)] leading-[120%] font-bold font-[var(--font-title)];
   }
 
   .subtitle {
-    @apply text-[16px] leading-[120%] font-semibold font-[var(--font-poppins)];
+    @apply text-[clamp(14px,1.17vw,20px)] leading-[120%] font-semibold font-[var(--font-poppins)];
   }
 
   .body-md {
-    @apply text-[16px] leading-[120%] font-normal font-[var(--font-poppins)];
+    @apply text-[clamp(14px,1.17vw,18px)] leading-[120%] font-normal font-[var(--font-poppins)];
   }
 
   .body-sm {
-    @apply text-[14px] leading-[120%] font-normal font-[var(--font-poppins)];
+    @apply text-[clamp(12px,1.02vw,16px)] leading-[120%] font-normal font-[var(--font-poppins)];
   }
 
   .body-xs {
-    @apply text-[12px] leading-[120%] font-normal font-[var(--font-poppins)];
+    @apply text-[clamp(10px,0.88vw,14px)] leading-[120%] font-normal font-[var(--font-poppins)];
   }
 
   .label-md {
-    @apply text-[12px] leading-[120%] uppercase font-medium font-[var(--font-poppins)];
+    @apply text-[clamp(10px,0.88vw,12px)] leading-[120%] uppercase font-medium font-[var(--font-poppins)];
   }
 
   .label-sm {
-    @apply text-[10px] leading-[120%] uppercase font-medium font-[var(--font-poppins)];
+    @apply text-[clamp(9px,0.73vw,10px)] leading-[120%] uppercase font-medium font-[var(--font-poppins)];
   }
 
   .action-md {
-    @apply text-[16px] leading-[120%] font-medium font-[var(--font-poppins)];
+    @apply text-[clamp(14px,1.17vw,18px)] leading-[120%] font-medium font-[var(--font-poppins)];
   }
 
   .action-sm {
-    @apply text-[14px] leading-[120%] font-medium font-[var(--font-poppins)];
+    @apply text-[clamp(12px,1.02vw,16px)] leading-[120%] font-medium font-[var(--font-poppins)];
   }
 }
