@@ -1,8 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useHookFormMask } from "use-mask-input";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+
+// Libs
+import { authClient } from "@/lib/auth-client";
+import { betterAuthErrorMessage } from "@/lib/better-auth-error-message";
+import { uploadProfilePhoto } from "@/lib/api";
 
 // Validator
 import { registerFormSchema, RegisterFormSchema } from "./validator";
@@ -17,13 +25,52 @@ import { CustomFormMessage } from "@/components/custom-form-message";
 
 // Component
 export function RegisterForm() {
+  const router = useRouter();
+
+  const [loading, setLoading] = useState(false);
+
   const form = useForm<RegisterFormSchema>({
     resolver: zodResolver(registerFormSchema),
   });
   const registerWithMask = useHookFormMask(form.register);
 
-  const onSubmit = async (data: RegisterFormSchema) => {
-    console.log(data);
+  const onSubmit = async ({
+    email,
+    password,
+    name,
+    phone,
+    profile,
+  }: RegisterFormSchema) => {
+    const file = profile as File;
+
+    await authClient.signUp.email({
+      name,
+      phone,
+      email,
+      password,
+      fetchOptions: {
+        onError: (ctx) => {
+          toast.error(betterAuthErrorMessage(ctx.error));
+          setLoading(false);
+        },
+        onSuccess: async (ctx) => {
+          // Upload photo
+          const uploadResponse = await uploadProfilePhoto({ file });
+
+          if (!uploadResponse.ok) {
+            toast.error(
+              `Não foi possível salvar sua foto de perfil: ${uploadResponse.message}`
+            );
+          }
+
+          setLoading(false);
+          router.push("/dashboard");
+        },
+        onRequest: () => {
+          setLoading(true);
+        },
+      },
+    });
   };
 
   return (

@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { DM_Sans, Poppins } from "next/font/google";
 import "./globals.css";
+
+// Components
 import { Toaster } from "sonner";
+import { ReactQueryProvider } from "@/components/react-query-provider";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -30,8 +33,10 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${poppins.variable} antialiased font-poppins`}
       >
-        {children}
-        <Toaster richColors />
+        <ReactQueryProvider>
+          {children}
+          <Toaster richColors />
+        </ReactQueryProvider>
       </body>
     </html>
   );
