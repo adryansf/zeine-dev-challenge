@@ -15,10 +15,11 @@ import { CustomIcon } from "./custom-icon";
 interface Props {
   name: string;
   image: string;
+  handleLogout?: () => void;
 }
 
 // Component
-export function UserMenu({ name, image }: Props) {
+export function UserMenu({ name, image, handleLogout }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -45,7 +46,10 @@ export function UserMenu({ name, image }: Props) {
           <span className="body-sm text-gray-300 w-[34px]">{name}</span>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-shape" />
-        <DropdownMenuItem className="text-orange-base flex justify-between action-sm gap-2 p-0.5 hover:bg-transparent focus:bg-transparent focus:text-orange-base cursor-pointer">
+        <DropdownMenuItem
+          onClick={handleLogout}
+          className="text-orange-base flex justify-between action-sm gap-2 p-0.5 hover:bg-transparent focus:bg-transparent focus:text-orange-base cursor-pointer"
+        >
           <span>Sair</span>
           <CustomIcon size={20} icon="logout" />
         </DropdownMenuItem>

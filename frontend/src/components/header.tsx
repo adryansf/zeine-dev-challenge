@@ -1,6 +1,9 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+
+// Libs
+import { authClient } from "@/lib/auth-client";
 
 // Components
 import { Navbar } from "@/components/navbar";
@@ -16,13 +19,21 @@ import { UserMenu } from "@/components/user-menu";
 import type { INavItemAttributes } from "./navbar/navbar-item";
 
 const navigationLinks: INavItemAttributes[] = [
-  { href: "/navbar", label: "Dashboard", icon: "chart-histogram" },
-  { href: "/produto", label: "Produtos", icon: "package" },
+  { href: "/dashboard", label: "Dashboard", icon: "chart-histogram" },
+  { href: "/produtos", label: "Produtos", icon: "package" },
 ];
 
 // Component
 export function Header() {
+  const { data } = authClient.useSession();
+  const router = useRouter();
+
   const pathname = usePathname();
+
+  const handleLogout = async () => {
+    await authClient.signOut();
+    router.push("/");
+  };
 
   return (
     <header className="border-b px-4 md:px-6">
@@ -95,8 +106,9 @@ export function Header() {
         <div className="flex flex-1 items-center justify-end gap-2">
           <div className="relative">
             <UserMenu
-              image="https://xsgames.co/randomusers/assets/avatars/male/21.jpg"
-              name="User"
+              image={data?.user.image || ""}
+              name={data?.user.name || ""}
+              handleLogout={handleLogout}
             />
           </div>
         </div>

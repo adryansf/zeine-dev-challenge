@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 
 // Types
-type Status = "listing" | "sold" | "disabled";
+type Status = "listed" | "sold" | "canceled";
 
 interface Props {
   status: Status;
@@ -11,15 +11,15 @@ interface Props {
 // Component
 export function TagStatus({ status }: Props) {
   const statusStyle = {
-    listing: "bg-blue-dark",
+    listed: "bg-blue-dark",
     sold: "bg-success",
-    disabled: "bg-gray-300",
+    canceled: "bg-gray-300",
   };
 
   const statusText = {
-    listing: "ANUNCIADO",
+    listed: "ANUNCIADO",
     sold: "VENDIDO",
-    disabled: "DESATIVADO",
+    canceled: "DESATIVADO",
   };
 
   return (

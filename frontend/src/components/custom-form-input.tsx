@@ -16,13 +16,13 @@ import { iconVariants } from "@/components/custom-icon";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: iconVariants;
-  label: string;
+  label?: string;
   name: string;
 }
 
 // Component
 export function CustomFormInput({
-  label,
+  label = "",
   icon,
   type = "text",
   placeholder = "",
@@ -37,7 +37,7 @@ export function CustomFormInput({
   return (
     <div className="grid w-full group">
       {/* Label */}
-      <CustomLabel text={label} htmlFor={rest.name} />
+      {label && <CustomLabel text={label} htmlFor={rest.name} />}
       {/* Input */}
       <div className="flex gap-2 items-center py-3.5 px-0.5 border-b-1 border-gray-100 group-focus-within:border-gray-400 group-has-[input:not(:placeholder-shown)]:border-gray-400 flex-row-reverse w-full">
         {/* View Pass */}

@@ -71,7 +71,7 @@ export function CustomSelectTrigger({
           </SelectPrimitive.Icon>
         </SelectPrimitive.Trigger>
 
-        <div className={cn(defaultClass)}>
+        <div className="px-0.5 py-3.5">
           <button
             className="p-1 rounded-full bg-shape cursor-pointer absolute right-10"
             onClick={clearValue}

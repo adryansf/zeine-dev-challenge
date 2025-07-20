@@ -7,10 +7,12 @@ import { useHookFormMask } from "use-mask-input";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
+// Orval
+import { patchApiUsersPhotoUpload } from "@/orval/users/users";
+
 // Libs
 import { authClient } from "@/lib/auth-client";
 import { betterAuthErrorMessage } from "@/lib/better-auth-error-message";
-import { uploadProfilePhoto } from "@/lib/api";
 
 // Validator
 import { registerFormSchema, RegisterFormSchema } from "./validator";
@@ -55,13 +57,9 @@ export function RegisterForm() {
         },
         onSuccess: async (ctx) => {
           // Upload photo
-          const uploadResponse = await uploadProfilePhoto({ file });
-
-          if (!uploadResponse.ok) {
-            toast.error(
-              `Não foi possível salvar sua foto de perfil: ${uploadResponse.message}`
-            );
-          }
+          const uploadResponse = await patchApiUsersPhotoUpload({
+            file,
+          });
 
           setLoading(false);
           router.push("/dashboard");

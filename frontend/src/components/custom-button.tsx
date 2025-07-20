@@ -49,7 +49,7 @@ export function CustomButton({
       className={cn(
         sizeStyle[size],
         variantsStyle[variant],
-        `flex flex-wrap items-center rounded-[10px] cursor-pointer transition-all w-full justify-between`,
+        `flex flex-wrap items-center rounded-[10px] cursor-pointer transition-all w-full justify-between [&:not(:has(svg))]:justify-center`,
         rest.className
       )}
     >

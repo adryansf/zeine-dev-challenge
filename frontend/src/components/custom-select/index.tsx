@@ -15,7 +15,7 @@ interface IOption {
 }
 
 interface Props extends React.ComponentProps<typeof Select> {
-  label: string;
+  label?: string;
   placeholder?: string;
   className?: string;
   icon?: iconVariants;
@@ -24,7 +24,7 @@ interface Props extends React.ComponentProps<typeof Select> {
 
 // Component
 export function CustomSelect({
-  label,
+  label = "",
   icon,
   options,
   placeholder = "",
@@ -42,11 +42,12 @@ export function CustomSelect({
   };
 
   const clearValue = () => {
+    if (onValueChange) onValueChange("");
     setValue("");
   };
 
   return (
-    <Select onValueChange={handleValueChange} value={value} {...rest}>
+    <Select {...rest} onValueChange={handleValueChange} value={value}>
       {/* Trigger and Label */}
       <CustomSelectTrigger
         id={id}
