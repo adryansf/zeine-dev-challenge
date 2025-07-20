@@ -12,6 +12,7 @@ const auth: FastifyPluginAsyncZod = async (fastify, opts): Promise<void> => {
     "/sign-up",
     {
       schema: {
+        tags: ["auth"],
         body: z.object({
           name: z
             .string({ error: "Nome é obrigatório" })
@@ -68,6 +69,7 @@ const auth: FastifyPluginAsyncZod = async (fastify, opts): Promise<void> => {
     "/sign-in",
     {
       schema: {
+        tags: ["auth"],
         body: z.object({
           email: z.email({ error: "Formato de email inválido" }),
           password: z

@@ -23,6 +23,7 @@ const users: FastifyPluginAsyncZod = async (fastify, opts): Promise<void> => {
         return () => true;
       },
       schema: {
+        tags: ["users"],
         consumes: ["multipart/form-data"],
         body: z.object({
           file: z.file().describe("binary"),
