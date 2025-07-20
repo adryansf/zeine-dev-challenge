@@ -14,6 +14,7 @@ export const user = pgTable("user", {
   updatedAt: timestamp("updated_at")
     .$defaultFn(() => /* @__PURE__ */ new Date())
     .notNull(),
+  phone: text("phone").notNull(),
 });
 
 export const session = pgTable("session", {

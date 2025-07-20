@@ -1,5 +1,5 @@
 {
-  "id": "87052c9b-0ee2-4266-9b53-8f9655387eb7",
+  "id": "f2bcc5f1-2f31-4f77-b041-40e6ac01ef25",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -235,6 +235,12 @@
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "phone": {
+          "name": "phone",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         }

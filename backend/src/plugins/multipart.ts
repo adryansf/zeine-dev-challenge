@@ -1,5 +1,5 @@
 import fp from "fastify-plugin";
-import sensible from "@fastify/sensible";
+import multipart from "@fastify/multipart";
 
 // Types
 import type { FastifySensibleOptions } from "@fastify/sensible";
@@ -10,5 +10,10 @@ import type { FastifySensibleOptions } from "@fastify/sensible";
  * @see https://github.com/fastify/fastify-sensible
  */
 export default fp<FastifySensibleOptions>(async (fastify) => {
-  fastify.register(sensible);
+  fastify.register(multipart, {
+    limits: {
+      fileSize: 5 * 1024 * 1024, //
+      files: 1,
+    },
+  });
 });
