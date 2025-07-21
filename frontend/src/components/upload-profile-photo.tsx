@@ -18,6 +18,7 @@ export function UploadProfilePhoto({ onUpload }: Props) {
   const [{ files }, { openFileDialog, getInputProps }] = useFileUpload({
     accept: "image/*",
     maxFiles: 1,
+    maxSize: 5000000, // 5MB
     onFilesChange: (files) => {
       if (files.length > 0) {
         onUpload(files[0].file);

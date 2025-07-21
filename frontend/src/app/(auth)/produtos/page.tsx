@@ -13,7 +13,7 @@ export default function Products() {
       </section>
 
       <section className={`flex gap-6 w-full items-start`}>
-        <aside className="w-full max-w-xs lg:max-w-[327px] p-6 rounded-[20px] bg-white gap-6 text-greay-300 title-sm space-y-6">
+        <aside className="w-full max-w-xs lg:max-w-[327px] p-6 rounded-[20px] bg-white gap-6 text-gray-300 title-sm space-y-6">
           <h2>Filtrar</h2>
           <FilterProductsForm />
         </aside>

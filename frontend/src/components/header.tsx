@@ -1,6 +1,7 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 // Libs
 import { authClient } from "@/lib/auth-client";
@@ -14,6 +15,12 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { UserMenu } from "@/components/user-menu";
+import { CustomButton } from "@/components/custom-button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Types
 import type { INavItemAttributes } from "./navbar/navbar-item";
@@ -104,6 +111,23 @@ export function Header() {
         </Navbar.Root>
         {/* Right side */}
         <div className="flex flex-1 items-center justify-end gap-2">
+          <Tooltip delayDuration={7000}>
+            <TooltipTrigger>
+              <Link className="max-w-[157px]" href="/produtos/novo">
+                <CustomButton
+                  text="Novo Produto"
+                  size="small"
+                  variant="solid"
+                  leftIcon="plus-sign"
+                  className="flex-row"
+                />
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Tá esperando o quê? Boraa moeer!! 🚀</p>
+            </TooltipContent>
+          </Tooltip>
+
           <div className="relative">
             <UserMenu
               image={data?.user.image || ""}
