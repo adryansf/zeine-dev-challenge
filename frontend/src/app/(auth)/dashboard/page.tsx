@@ -11,30 +11,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const stats = [
-  {
-    label: "Produtos vendidos",
-    value: 24,
-    icon: "🏷️",
-    bg: "bg-blue-100",
-    text: "text-blue-500",
-  },
-  {
-    label: "Produtos anunciados",
-    value: 56,
-    icon: "🏪",
-    bg: "bg-blue-100",
-    text: "text-blue-500",
-  },
-  {
-    label: "Pessoas visitantes",
-    value: 1238,
-    icon: "👥",
-    bg: "bg-blue-100",
-    text: "text-blue-500",
-  },
-];
-
 const chartData = Array.from({ length: 30 }, (_, i) => ({
   date: String(i + 26).padStart(2, "0"),
   visitors: Math.floor(Math.random() * 150) + 50,

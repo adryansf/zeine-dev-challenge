@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 // Utils
 import { cn } from "@/lib/utils";
 
@@ -24,7 +22,6 @@ interface Props extends React.InputHTMLAttributes<HTMLTextAreaElement> {
 export function CustomFormTextArea({
   label = "",
   icon,
-  type = "text",
   placeholder = "",
   ...rest
 }: Props) {

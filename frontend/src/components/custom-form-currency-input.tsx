@@ -24,7 +24,6 @@ interface Props extends NumericFormatProps {
 export function CustomFormCurrencyInput({
   label = "",
   icon,
-  type = "text",
   placeholder = "",
   ...rest
 }: Props) {

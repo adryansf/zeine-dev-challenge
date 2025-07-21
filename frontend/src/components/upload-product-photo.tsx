@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 // Hooks
 import { useFileUpload } from "@/hooks/use-file-upload";
 
@@ -49,7 +51,7 @@ export function UploadProductPhoto({ onUpload }: Props) {
           </p>
         </div>
         {previewUrl && (
-          <img
+          <Image
             className="size-full object-cover"
             src={previewUrl}
             alt="Prévia da imagem carregada"

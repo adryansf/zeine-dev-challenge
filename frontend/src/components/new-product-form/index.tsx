@@ -77,6 +77,7 @@ export function NewProductForm() {
       toast.success("Produto criado com sucesso.");
       router.push("/produtos");
     } catch (err) {
+      console.error(err);
       toast.error("Não foi possível criar o produto");
     }
 

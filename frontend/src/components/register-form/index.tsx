@@ -55,9 +55,9 @@ export function RegisterForm() {
           toast.error(betterAuthErrorMessage(ctx.error));
           setLoading(false);
         },
-        onSuccess: async (ctx) => {
+        onSuccess: async () => {
           // Upload photo
-          const uploadResponse = await patchApiUsersPhotoUpload({
+          await patchApiUsersPhotoUpload({
             file,
           });
 
@@ -200,11 +200,12 @@ export function RegisterForm() {
 
         <CustomButton
           size="medium"
-          text="Cadastrar"
+          text={loading ? "Cadastrando..." : "Cadastrar"}
           variant="solid"
           rightIcon="arrow-right"
           className="mt-12"
           type="submit"
+          disabled={loading}
         />
       </form>
     </Form>

@@ -42,11 +42,11 @@ export function ProductsArea(props: React.HTMLAttributes<HTMLDivElement>) {
 
   const handleNextPage = useCallback(() => {
     setPage(page + 1);
-  }, [page]);
+  }, [page, setPage]);
 
   const handlePreviousPage = useCallback(() => {
     setPage(page - 1);
-  }, [page]);
+  }, [page, setPage]);
 
   return (
     <main

@@ -37,7 +37,7 @@ export function LoginForm() {
           toast.error(betterAuthErrorMessage(ctx.error));
           setLoading(false);
         },
-        onSuccess: (ctx) => {
+        onSuccess: () => {
           setLoading(false);
         },
         onRequest: () => {

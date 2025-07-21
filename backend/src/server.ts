@@ -1,7 +1,7 @@
 import { fastify } from "fastify";
 import { app as App } from "./app.ts";
 
-const PORT = Number(process.env.PORT!);
+const PORT = Number(process.env.PORT!) || 3000;
 
 if (!PORT) {
   throw new Error("PORT is not set");
