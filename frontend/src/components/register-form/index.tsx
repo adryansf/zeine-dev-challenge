@@ -7,6 +7,9 @@ import { useHookFormMask } from "use-mask-input";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
+// Store
+import { useAuthStore } from "@/store/auth-store";
+
 // Orval
 import { patchApiUsersPhotoUpload } from "@/orval/users/users";
 
@@ -29,6 +32,7 @@ import { CustomFormMessage } from "@/components/custom-form-message";
 export function RegisterForm() {
   const router = useRouter();
 
+  const { setToken } = useAuthStore();
   const [loading, setLoading] = useState(false);
 
   const form = useForm<RegisterFormSchema>({
@@ -55,11 +59,20 @@ export function RegisterForm() {
           toast.error(betterAuthErrorMessage(ctx.error));
           setLoading(false);
         },
-        onSuccess: async () => {
+        onSuccess: async (ctx) => {
+          const authToken = ctx.response.headers.get("set-auth-token") || "";
+          setToken(authToken);
           // Upload photo
-          await patchApiUsersPhotoUpload({
-            file,
-          });
+          await patchApiUsersPhotoUpload(
+            {
+              file,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+              },
+            }
+          );
 
           setLoading(false);
           router.push("/dashboard");

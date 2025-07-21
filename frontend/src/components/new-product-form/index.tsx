@@ -8,6 +8,9 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useQueryClient } from "@tanstack/react-query";
 
+// Store
+import { useAuthStore } from "@/store/auth-store";
+
 // Orval
 import {
   patchApiProductsIdProductPhotoUpload,
@@ -34,7 +37,15 @@ import { CustomFormCurrencyInput } from "../custom-form-currency-input";
 // Component
 export function NewProductForm() {
   const queryClient = useQueryClient();
-  const createProductMutation = usePostApiProducts();
+  const { token } = useAuthStore();
+
+  const createProductMutation = usePostApiProducts({
+    request: {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  });
 
   const router = useRouter();
 
@@ -69,9 +80,17 @@ export function NewProductForm() {
         },
       });
 
-      await patchApiProductsIdProductPhotoUpload(newProduct.id, {
-        file,
-      });
+      await patchApiProductsIdProductPhotoUpload(
+        newProduct.id,
+        {
+          file,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       queryClient.invalidateQueries();
       toast.success("Produto criado com sucesso.");

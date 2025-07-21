@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
+// Store
+import { useAuthStore } from "@/store/auth-store";
+
 // Libs
 import { authClient } from "@/lib/auth-client";
 import { betterAuthErrorMessage } from "@/lib/better-auth-error-message";
@@ -22,6 +25,8 @@ import { CustomButton } from "@/components/custom-button";
 export function LoginForm() {
   const [loading, setLoading] = useState(false);
 
+  const { setToken } = useAuthStore();
+
   const form = useForm<LoginFormSchema>({
     resolver: zodResolver(loginFormSchema),
   });
@@ -37,7 +42,10 @@ export function LoginForm() {
           toast.error(betterAuthErrorMessage(ctx.error));
           setLoading(false);
         },
-        onSuccess: () => {
+        onSuccess: (ctx) => {
+          const authToken = ctx.response.headers.get("set-auth-token") || "";
+
+          setToken(authToken);
           setLoading(false);
         },
         onRequest: () => {

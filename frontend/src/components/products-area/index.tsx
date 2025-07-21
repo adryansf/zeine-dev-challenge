@@ -5,6 +5,7 @@ import { LoaderIcon } from "lucide-react";
 
 // Store
 import { useProductsAreaStore } from "@/store/products-area-store";
+import { useAuthStore } from "@/store/auth-store";
 
 // Constants
 import { categoryToText } from "@/constants/product-constants";
@@ -23,18 +24,31 @@ import { Pagination } from "@/components/pagination";
 
 // Component
 export function ProductsArea(props: React.HTMLAttributes<HTMLDivElement>) {
+  const { token } = useAuthStore();
+
   const {
     filters: { category, search, status },
     page,
     setPage,
   } = useProductsAreaStore();
 
-  const { data, isLoading } = useGetApiProducts({
-    page,
-    category,
-    search,
-    status,
-  });
+  const { data, isLoading, error } = useGetApiProducts(
+    {
+      page,
+      category,
+      search,
+      status,
+    },
+    {
+      request: {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    }
+  );
+
+  console.log(error);
 
   const products = useMemo(() => data?.products || [], [data]);
 
