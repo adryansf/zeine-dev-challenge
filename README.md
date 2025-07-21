@@ -52,7 +52,7 @@ Implementar três telas principais com funcionalidades completas de autenticaç�
 
 - Fastify (TypeScript)
 - PostgreSQL
-- Prisma ORM
+- DrizzleORM
 - Swagger na rota `/docs`
 
 ### Outros
@@ -72,3 +72,94 @@ Implementar três telas principais com funcionalidades completas de autenticaç�
 git clone https://github.com/seu-usuario/zeine-dev-challenge.git
 cd zeine-dev-challenge
 ```
+
+### 2. Crie o .env dentro da pasta /docker
+
+```bash
+cp docker/.env.example docker/.env
+```
+
+### 3. Suba os containers
+
+```bash
+docker-compose -f docker/docker-compose.yml up --build
+```
+
+# 🌐 Acesso aos Serviços
+
+| Serviço  | URL                        |
+| -------- | -------------------------- |
+| Frontend | http://localhost:3001      |
+| Backend  | http://localhost:3000/docs |
+| MinIO    | http://localhost:9001      |
+
+---
+
+## 📦 Estrutura do Projeto
+
+.
+├── backend/ # Backend com Fastify e DrizzleORM
+│ ├── src/
+│ ├── drizzle/
+│ └── ...
+├── frontend/ # Frontend com Next.js
+│ ├── app/
+│ ├── components/
+│ └── ...
+├── docker/ # Infraestrutura com Docker
+│ ├── docker-compose.yml
+│ └── .env
+├── README.md
+└── ...
+
+---
+
+## 📌 Próximos passos
+
+- [ ] ✅ Adicionar testes automatizados (API e/ou UI)
+- [ ] ✅ Gerar e incluir o diagrama ERD
+- [ ] ✅ Publicar deploy do frontend (ex: Vercel)
+- [ ] ✅ Publicar deploy do backend (ex: Render, Railway etc.)
+
+---
+
+## 🧪 Testes
+
+> Em breve...
+
+---
+
+## 🧠 Decisões Técnicas
+
+- **Separação de responsabilidades:** organização clara entre frontend, backend e infraestrutura (`/docker`)
+- **MinIO** para simular armazenamento de imagens, evitando dependência da AWS S3 em ambiente local
+- **Fastify + DrizzleORM** para performance e simplicidade na camada backend
+- **Swagger** no backend para facilitar testes e documentação rápida da API
+- **Tailwind CSS** para estilização rápida e responsiva no frontend
+
+---
+
+## 📊 Diagrama ERD
+
+> Em breve...
+
+---
+
+## 🌍 Deploy
+
+> Em breve...
+
+---
+
+## 🛡️ Autenticação
+
+- Utiliza JWT / Cookies (via [Better Auth](https://github.com/better-typed/better-auth))
+
+---
+
+## 🧩 Extras implementados
+
+- Validações com `zod` tanto no frontend quanto backend
+- Upload de imagem com visualização em tempo real
+- Mensagem secreta interativa (hover de 7 segundos)
+- Componentes reutilizáveis e tipados com TypeScript
