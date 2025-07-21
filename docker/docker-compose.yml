@@ -4,7 +4,6 @@ services:
   backend:
     build:
       context: ../backend
-    restart: always
     env_file:
       - .env
     ports:
@@ -53,13 +52,13 @@ services:
       sleep 5;
       /usr/bin/mc alias set dockerminio http://minio:9000 $MINIO_ACCESS_KEY $MINIO_SECRET_KEY;
       /usr/bin/mc mb dockerminio/$MINIO_BUCKET_NAME;
+      /usr/bin/mc anonymous set download dockerminio/$MINIO_BUCKET_NAME;
       exit 0;
       "
 
   db:
     container_name: db
     image: bitnami/postgresql:latest
-    restart: always
     ports:
       - "5432:5432"
     environment:

@@ -34,7 +34,7 @@ export const patchApiUsersPhotoUpload = (
 formData.append(`file`, patchApiUsersPhotoUploadBody.file)
 
       return customInstance<void>(
-      {url: `http://localhost:3000/api/users/photo/upload`, method: 'PATCH',
+      {url: `/api/users/photo/upload`, method: 'PATCH',
       headers: {'Content-Type': 'multipart/form-data', },
        data: formData
     },

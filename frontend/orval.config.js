@@ -3,7 +3,6 @@ module.exports = {
     output: {
       mode: "tags-split",
       target: "src/orval/api.ts",
-      baseUrl: "http://localhost:3000",
       client: "react-query",
       override: {
         mutator: {

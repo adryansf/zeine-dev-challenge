@@ -56,7 +56,7 @@ export const patchApiProductsIdProductPhotoUpload = (
 formData.append(`file`, patchApiProductsIdProductPhotoUploadBody.file)
 
       return customInstance<void>(
-      {url: `http://localhost:3000/api/products/${idProduct}/photo/upload`, method: 'PATCH',
+      {url: `/api/products/${idProduct}/photo/upload`, method: 'PATCH',
       headers: {'Content-Type': 'multipart/form-data', },
        data: formData
     },
@@ -114,7 +114,7 @@ const {mutation: mutationOptions, request: requestOptions} = options ?
       
       
       return customInstance<GetApiProducts200>(
-      {url: `http://localhost:3000/api/products/`, method: 'GET',
+      {url: `/api/products/`, method: 'GET',
         params, signal
     },
       options);
@@ -122,7 +122,7 @@ const {mutation: mutationOptions, request: requestOptions} = options ?
   
 
 export const getGetApiProductsQueryKey = (params?: GetApiProductsParams,) => {
-    return [`http://localhost:3000/api/products/`, ...(params ? [params]: [])] as const;
+    return [`/api/products/`, ...(params ? [params]: [])] as const;
     }
 
     
@@ -196,7 +196,7 @@ export const postApiProducts = (
       
       
       return customInstance<PostApiProducts201>(
-      {url: `http://localhost:3000/api/products/`, method: 'POST',
+      {url: `/api/products/`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: postApiProductsBody, signal
     },
@@ -254,7 +254,7 @@ const {mutation: mutationOptions, request: requestOptions} = options ?
       
       
       return customInstance<PatchApiProductsIdProduct200>(
-      {url: `http://localhost:3000/api/products/${idProduct}`, method: 'PATCH',
+      {url: `/api/products/${idProduct}`, method: 'PATCH',
       headers: {'Content-Type': 'application/json', },
       data: patchApiProductsIdProductBody
     },

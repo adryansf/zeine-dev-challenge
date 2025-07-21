@@ -38,7 +38,7 @@ export const postApiAuthSignUp = (
       
       
       return customInstance<PostApiAuthSignUp200>(
-      {url: `http://localhost:3000/api/auth/sign-up`, method: 'POST',
+      {url: `/api/auth/sign-up`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: postApiAuthSignUpBody, signal
     },
@@ -96,7 +96,7 @@ const {mutation: mutationOptions, request: requestOptions} = options ?
       
       
       return customInstance<PostApiAuthSignIn200>(
-      {url: `http://localhost:3000/api/auth/sign-in`, method: 'POST',
+      {url: `/api/auth/sign-in`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: postApiAuthSignInBody, signal
     },

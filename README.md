@@ -154,10 +154,10 @@ docker-compose -f docker/docker-compose.yml up --build
 
 ## 🌍 Deploy
 
-| Serviço  | URL                                          |
-| -------- | -------------------------------------------- |
-| Frontend | https://projeto-marketplace.adryansf.dev     |
-| Backend  | https://api-projeto-marketplace.adryansf.dev |
+| Serviço  | URL                                               |
+| -------- | ------------------------------------------------- |
+| Frontend | https://projeto-marketplace.adryansf.dev          |
+| Backend  | https://api-projeto-marketplace.adryansf.dev/docs |
 
 ---
 
