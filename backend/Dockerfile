@@ -13,11 +13,8 @@ RUN npm install
 # Copia o restante do código
 COPY . .
 
-# Compila o TypeScript
-RUN npm run start
-
 # Expõe a porta padrão do backend
 EXPOSE 3000
 
 # Comando para iniciar o backend
-CMD ["npm", "start"]
+CMD ["npm", "run", "migrate_and_start_env"]

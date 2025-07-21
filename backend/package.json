@@ -12,7 +12,8 @@
     "start": "node --experimental-strip-types --no-warnings src/server.ts",
     "dev": "node --env-file=.env --experimental-strip-types --watch --no-warnings src/server.ts",
     "migrate": "drizzle-kit migrate",
-    "migrate_and_start": "npm run migrate && npm run start"
+    "migrate_and_start": "npm run migrate && npm run start",
+    "migrate_and_start_env": "npm run migrate && node --env-file=.env --experimental-strip-types --no-warnings src/server.ts"
   },
   "keywords": [],
   "author": "Adryan Freitas",

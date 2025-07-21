@@ -70,6 +70,7 @@ const users: FastifyPluginAsyncZod = async (fastify, opts): Promise<void> => {
 
         return reply.status(204).send();
       } catch (err) {
+        console.error(err);
         return reply.internalServerError();
       }
     }

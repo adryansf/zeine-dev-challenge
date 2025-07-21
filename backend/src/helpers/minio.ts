@@ -3,17 +3,18 @@ import * as Minio from "minio";
 // Libs
 import { generateObjectName } from "../lib/utils.ts";
 
+const API_ENDPOINT = process.env.MINIO_API_ENDPOINT!;
 const ENDPOINT = process.env.MINIO_ENDPOINT!;
 const PORT = Number(process.env.MINIO_PORT)!;
 const ACCESS_KEY = process.env.MINIO_ACCESS_KEY!;
 const SECRET_KEY = process.env.MINIO_SECRET_KEY!;
 const BUCKET_NAME = process.env.MINIO_BUCKET_NAME!;
 
-if (!ENDPOINT || !PORT || !ACCESS_KEY || !SECRET_KEY) {
+if (!ENDPOINT || !PORT || !ACCESS_KEY || !SECRET_KEY || !API_ENDPOINT) {
   throw new Error("MINIO VARIABLES are incorrect.");
 }
 
-const [PROTOCOL, HOST] = ENDPOINT.split("://");
+const [PROTOCOL, HOST] = API_ENDPOINT.split("://");
 
 // Types
 interface IRemoveObjectParams {
@@ -51,7 +52,7 @@ export async function uploadObject({
   await minioClient.putObject(BUCKET_NAME, objectName, object);
 
   return {
-    url: `${PROTOCOL}://${HOST}/${BUCKET_NAME}/${objectName}`,
+    url: `${ENDPOINT}/${BUCKET_NAME}/${objectName}`,
     objectName,
   };
 }

@@ -1,12 +1,9 @@
-version: "3.8"
-
 name: zeine_dev_challenge
 
 services:
   backend:
     build:
       context: ../backend
-    working_dir: /app
     restart: always
     env_file:
       - .env
@@ -19,6 +16,7 @@ services:
   frontend:
     build:
       context: ../frontend
+    restart: always
     env_file:
       - .env
     ports:
@@ -27,9 +25,11 @@ services:
       - backend
 
   minio:
-    image: minio/minio:latest
+    image: quay.io/minio/minio:RELEASE.2025-04-22T22-12-26Z
     container_name: minio
     restart: always
+    env_file:
+      - .env
     ports:
       - "9000:9000"
       - "9001:9001"
@@ -39,6 +39,22 @@ services:
     command: server /data --console-address ":9001"
     volumes:
       - minio_data:/data
+      - ./minio-init:/etc/minio/init
+
+  createbuckets:
+    image: quay.io/minio/mc:latest
+    depends_on:
+      - minio
+    restart: on-failure
+    env_file:
+      - .env
+    entrypoint: >
+      /bin/sh -c "
+      sleep 5;
+      /usr/bin/mc alias set dockerminio http://minio:9000 $MINIO_ACCESS_KEY $MINIO_SECRET_KEY;
+      /usr/bin/mc mb dockerminio/$MINIO_BUCKET_NAME;
+      exit 0;
+      "
 
   db:
     container_name: db

@@ -23,6 +23,11 @@ Implementar três telas principais com funcionalidades completas de autenticaç�
 - Autenticação com e-mail e senha
 - Validação de campos obrigatórios
 
+### ✅ Tela de Cadastro
+
+- Criação de conta para novos usuários
+- Campos: nome, e-mail e senha
+
 ### ✅ Tela de Listagem de Produtos
 
 - Exibe produtos cadastrados com imagem, descrição, preço e status
@@ -69,11 +74,11 @@ Implementar três telas principais com funcionalidades completas de autenticaç�
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/zeine-dev-challenge.git
+git clone https://github.com/adryansf/zeine-dev-challenge.git
 cd zeine-dev-challenge
 ```
 
-### 2. Crie o .env dentro da pasta /docker
+### 2. Crie o `.env` dentro da pasta `/docker`
 
 ```bash
 cp docker/.env.example docker/.env
@@ -85,7 +90,9 @@ cp docker/.env.example docker/.env
 docker-compose -f docker/docker-compose.yml up --build
 ```
 
-# 🌐 Acesso aos Serviços
+---
+
+## 🌐 Acesso aos Serviços (modo local)
 
 | Serviço  | URL                        |
 | -------- | -------------------------- |
@@ -97,29 +104,29 @@ docker-compose -f docker/docker-compose.yml up --build
 
 ## 📦 Estrutura do Projeto
 
+```txt
 .
-├── backend/ # Backend com Fastify e DrizzleORM
-│ ├── src/
-│ ├── drizzle/
-│ └── ...
-├── frontend/ # Frontend com Next.js
-│ ├── app/
-│ ├── components/
-│ └── ...
-├── docker/ # Infraestrutura com Docker
-│ ├── docker-compose.yml
-│ └── .env
+├── backend/            # Backend com Fastify e DrizzleORM
+│   ├── src/
+│   ├── drizzle/
+│   └── ...
+├── frontend/           # Frontend com Next.js
+│   ├── app/
+│   ├── components/
+│   └── ...
+├── docker/             # Infraestrutura com Docker
+│   ├── docker-compose.yml
+│   └── .env
 ├── README.md
 └── ...
+```
 
 ---
 
-## 📌 Próximos passos
+## 📌 Próximos Passos
 
-- [ ] ✅ Adicionar testes automatizados (API e/ou UI)
-- [ ] ✅ Gerar e incluir o diagrama ERD
-- [ ] ✅ Publicar deploy do frontend (ex: Vercel)
-- [ ] ✅ Publicar deploy do backend (ex: Render, Railway etc.)
+- [ ] Adicionar testes automatizados (API e/ou UI)
+- [ ] Gerar e incluir o diagrama ERD
 
 ---
 
@@ -147,17 +154,21 @@ docker-compose -f docker/docker-compose.yml up --build
 
 ## 🌍 Deploy
 
-> Em breve...
+| Serviço  | URL                                          |
+| -------- | -------------------------------------------- |
+| Frontend | https://projeto-marketplace.adryansf.dev     |
+| Backend  | https://api-projeto-marketplace.adryansf.dev |
 
 ---
 
 ## 🛡️ Autenticação
 
 - Utiliza JWT / Cookies (via [Better Auth](https://github.com/better-typed/better-auth))
+- Tela de cadastro disponível no frontend para criar uma conta e acessar a aplicação
 
 ---
 
-## 🧩 Extras implementados
+## 🧩 Extras Implementados
 
 - Validações com `zod` tanto no frontend quanto backend
 - Upload de imagem com visualização em tempo real
